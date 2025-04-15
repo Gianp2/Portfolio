@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Gianluca Pasquinelli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <!-- Header -->
+    <header class="bg-gray-800 py-6 sticky top-0 z-10 shadow-lg">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-teal-400">Mi Portafolio</h1>
+            <nav>
+                <a href="#projects" class="text-lg hover:text-teal-400 transition mx-4">Proyectos</a>
+                <a href="#about" class="text-lg hover:text-teal-400 transition mx-4">Sobre Mí</a>
+                <a href="#contact" class="text-lg hover:text-teal-400 transition mx-4">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-5xl md:text-6xl font-extrabold mb-6">
+                <span id="typed-text"></span>
+            </h2>
+            <p class="text-xl md:text-2xl mb-8 text-gray-300"></p> 
+            <a href="#projects" class="inline-block bg-teal-500 text-white py-3 px-6 rounded-lg hover:bg-teal-600 transition text-lg">Explorar Proyectos</a>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-teal-400">Mis Proyectos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-list">
+                <!-- Proyectos se cargan dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+<section id="about" class="py-20 bg-gray-900">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 text-teal-400">Sobre Mí</h2>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+            <!-- Profile Image -->
+            <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shadow-lg transform hover:scale-105 transition duration-300">
+                <img src="img/fotogian.jpg" alt="Gianluca Pasquinelli" class="w-full h-full object-cover object-center">
+            </div>
+            <!-- About Text -->
+            <div class="text-center md:text-left max-w-xl">
+                <p class="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
+                    Soy <span class="font-semibold text-teal-400">Gianluca Pasquinelli</span>, Técnico en Análisis de Sistemas con habilidades en desarrollo de software, resolución de problemas y trabajo en equipo. Comprometido con la innovación y la entrega de soluciones efectivas. 
+                    Busco aportar valor a la empresa desde cualquier área en la que pueda desempeñarme, aprendiendo y adaptándome a los requerimientos para contribuir al éxito organizacional.
+                </p>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="mt-12">
+            <h3 class="text-3xl font-semibold text-center mb-8 text-teal-400">Educación</h3>
+            <div class="relative max-w-3xl mx-auto">
+                <!-- Timeline Line -->
+                <div class="absolute w-1 bg-teal-500 h-full left-1/2 transform -translate-x-1/2"></div>
+                <!-- Timeline Items -->
+                <div class="space-y-8">
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <p class="text-gray-300"><span class="font-semibold">Dante Alighieri NRO. 3154</span><br>Secundario Completo</p>
+                        </div>
+                        <div class="w-1/2 pl-8">
+                            <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+                                <i class="fas fa-graduation-cap text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8">
+                            <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+                                <i class="fas fa-graduation-cap text-white"></i>
+                            </div>
+                        </div>
+                        <div class="w-1/2 pl-8 text-left">
+                            <p class="text-gray-300"><span class="font-semibold">Colegio Sup. "Florentino Ameghino" NRO. 47</span><br>Técnico Superior en Análisis Funcional de Sistemas Informáticos</p>
+                        </div>
+                    </div>
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <p class="text-gray-300"><span class="font-semibold">CECLA NRO. 111</span><br>Marketing y Redes.</p>
+                            <p>Inglés Técnico.</p>
+                            <p>Capacitación laboral en informática orientada a tareas administrativas/ contables.</p>
+                        </div>
+                        <div class="w-1/2 pl-8">
+                            <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+                                <i class="fas fa-graduation-cap text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8">
+                            <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+                                <i class="fas fa-graduation-cap text-white"></i>
+                            </div>
+                        </div>
+                        <div class="w-1/2 pl-8 text-left">
+                            <p class="text-gray-300"><span class="font-semibold">CECLA NRO. 25</span><br>Programación Front-End</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+<div class="mt-12">
+    <h3 class="text-3xl font-semibold text-center mb-8 text-teal-400">Habilidades</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+  
+      <!-- Programación -->
+      <div class="bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="flex items-center mb-2">
+          <i class="fas fa-code text-teal-400 mr-2"></i>
+          <h4 class="text-lg font-semibold">Programación</h4>
+        </div>
+        <ul class="text-gray-300 list-disc pl-5">
+          <li>JavaScript</li>
+          <li>TypeScript</li>
+          <li>Python</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>React Js</li>
+        </ul>
+      </div>
+  
+      <!-- Bases de Datos -->
+      <div class="bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="flex items-center mb-2">
+          <i class="fas fa-database text-teal-400 mr-2"></i>
+          <h4 class="text-lg font-semibold">Bases de Datos</h4>
+        </div>
+        <ul class="text-gray-300 list-disc pl-5">
+          <li>MySQL</li>
+          <li>MongoDB</li>
+        </ul>
+      </div>
+  
+      <!-- Herramientas -->
+      <div class="bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="flex items-center mb-2">
+          <i class="fas fa-tools text-teal-400 mr-2"></i>
+          <h4 class="text-lg font-semibold">Herramientas</h4>
+        </div>
+        <ul class="text-gray-300 list-disc pl-5">
+          <li>Microsoft Word</li>
+          <li>Microsoft Excel</li>
+        </ul>
+      </div>
+  
+      <!-- Otros -->
+      <div class="bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+        <div class="flex items-center mb-2">
+          <i class="fas fa-globe text-teal-400 mr-2"></i>
+          <h4 class="text-lg font-semibold">Otros</h4>
+        </div>
+        <ul class="text-gray-300 list-disc pl-5">
+          <li>Marketing y Redes</li>
+          <li>Inglés Técnico</li>
+          <li>Capacitación laboral en informática orientada a tareas administrativas/ contables.</li>
+          <li>Alfabetización Digital</li>
+        </ul>
+      </div>
+  
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8 text-teal-400">Contacto</h2>
+            <p class="text-lg md:text-xl text-gray-300 mb-6">¿Listo para colaborar? Contáctame:</p>
+            <a href="https://wa.me/5493471417071" target="_blank" class="inline-block bg-teal-500 text-white py-3 px-6 rounded-lg hover:bg-teal-600 transition text-lg mr-4">WhatsApp</a>
+            <a href="mailto:gianpasquinelli24@gmail.com" class="inline-block bg-teal-500 text-white py-3 px-6 rounded-lg hover:bg-teal-600 transition text-lg">Enviar Correo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">© 2025 Gianluca Pasquinelli. Las Parejas, Santa Fe, Argentina.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Typed.js para animación de texto
+        const typed = new Typed('#typed-text', {
+            strings: ['Analista de Sistemas', 'Desarrollador Web', 'Stack: HTML · CSS · JavaScript · Python', 'Bases de datos: MySQL · MongoDB', 'Desarrollo web full stack jr.'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+
+        // Lista de proyectos
+        const projects = [
+            {
+                title: 'Tienda de Motos',
+                description: 'Plataforma web para la venta de motos con diseño responsive y funcionalidades dinámicas.',
+                github: 'https://github.com/Gianp2/Tienda-Motos',
+                image: 'img/moto.png'
+            },
+            {
+                title: 'Recetario de Cocina',
+                description: 'Aplicación web para crear, gestionar y compartir recetas con almacenamiento local.',
+                github: 'https://github.com/Gianp2/Recetario-de-Cocina',
+                image: 'img/cocina.png'
+            }
+        ];
+
+        // Cargar proyectos dinámicamente
+        const projectList = document.getElementById('project-list');
+        projects.forEach(project => {
+            const isMotoProject = project.title === 'Tienda de Motos';
+            const projectCard = `
+                <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover ${isMotoProject ? 'object-center' : ''}">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-2">${project.title}</h3>
+                        <p class="text-gray-300 mb-4">${project.description}</p>
+                        <a href="${project.github}" target="_blank" class="inline-block bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition">Ver en GitHub</a>
+                    </div>
+                </div>
+            `;
+            projectList.innerHTML += projectCard;
+        });
+    </script>
+</body>
+</html>
