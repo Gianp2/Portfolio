@@ -27,7 +27,7 @@
             line-height: 1.6;
         }
 
-        /* Animación para títulos (h1, h2, h3) */
+        /* Animación para títulos */
         h1, h2, h3 {
             animation: fadeInUp 0.8s ease-out;
         }
@@ -43,9 +43,10 @@
             border: 2px solid #3B82F6;
             backdrop-filter: blur(8px);
             border-radius: 12px;
-            padding: 2rem;
+            padding: 1.5rem;
             margin: 1rem auto;
-            max-width: 1200px;
+            max-width: 100%;
+            width: 100%;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -119,6 +120,9 @@
 
         .project-card img {
             transition: transform 0.5s ease;
+            object-fit: cover;
+            width: 100%;
+            height: 12rem;
         }
 
         .project-card:hover {
@@ -130,7 +134,6 @@
             transform: scale(1.1);
         }
 
-        /* Contenedor para centrar el botón de GitHub */
         .project-card .button-container {
             display: flex;
             justify-content: center;
@@ -190,12 +193,12 @@
         /* Botón de volver arriba */
         #scrollTopBtn {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
+            bottom: 1.5rem;
+            right: 1.5rem;
             background-color: #06B6D4;
             color: #FFFFFF;
-            width: 48px;
-            height: 48px;
+            width: 3rem;
+            height: 3rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -215,19 +218,18 @@
         }
 
         /* Responsividad */
-        @media (max-width: 768px) {
+        @media (max-width: 1280px) {
             .portfolio-section {
-                padding: 1.5rem;
-                margin: 0.5rem;
-                border-width: 1px;
+                padding: 1.25rem;
+                margin: 0.75rem;
             }
 
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.25rem;
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: 1.875rem;
             }
 
             h3 {
@@ -235,20 +237,92 @@
             }
 
             .project-card img {
-                height: 160px;
+                height: 10rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            header .container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
 
             header nav {
-                flex-direction: column;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
                 gap: 1rem;
             }
 
             header nav a {
                 font-size: 1rem;
             }
+
+            .project-card img {
+                height: 9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-section {
+                padding: 1rem;
+                margin: 0.5rem;
+                border-width: 1px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            .project-card img {
+                height: 8rem;
+            }
+
+            .about-section .flex {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-section .w-48 {
+                width: 10rem;
+                height: 10rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+            }
         }
 
         @media (max-width: 640px) {
+            .portfolio-section {
+                padding: 0.75rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            h3 {
+                font-size: 1.125rem;
+            }
+
+            .project-card img {
+                height: 7rem;
+            }
+
             .timeline-item .w-1\/2 {
                 width: 100%;
                 text-align: center;
@@ -260,16 +334,63 @@
             }
 
             .timeline-item p {
-                font-size: 0.9rem;
+                font-size: 0.875rem;
             }
 
             .language-tag {
                 font-size: 0.7rem;
                 padding: 0.2rem 0.4rem;
             }
+
+            header nav {
+                gap: 0.75rem;
+            }
+
+            header nav a {
+                font-size: 0.875rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-section {
+                padding: 0.5rem;
+                margin: 0.25rem;
+            }
+
+            h1 {
+                font-size: 1.25rem;
+            }
+
+            h2 {
+                font-size: 1.125rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            .project-card img {
+                height: 6rem;
+            }
+
+            .about-section .w-48 {
+                width: 8rem;
+                height: 8rem;
+            }
+
+            .contact-buttons a {
+                font-size: 0.875rem;
+                padding: 0.5rem 1rem;
+            }
         }
     </style>
 </head>
+
 <body class="bg-gray-900 text-white font-sans">
     <!-- Header -->
     <header class="bg-gray-800 py-4 sticky top-0 z-10 shadow-lg">
@@ -289,84 +410,84 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 portfolio-section">
+        <section class="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 portfolio-section">
             <div class="container mx-auto px-4 text-center animate-fadeInUp">
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
                     <span id="typed-text"></span>
                 </h2>
-                <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">IT Functional Analyst & Front-End Developer | Trainee.</p>
-                <a href="#projects" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition text-lg hover:scale-105 smooth-scroll" aria-label="Explorar proyectos">Explorar Proyectos</a>
+                <p class="text-base sm:text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">IT Functional Analyst & Front-End Developer | Trainee.</p>
+                <a href="#projects" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition text-base sm:text-lg hover:scale-105 smooth-scroll" aria-label="Explorar proyectos">Explorar Proyectos</a>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-16 bg-gray-800 portfolio-section">
+        <section id="projects" class="py-12 sm:py-16 bg-gray-800 portfolio-section">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp">Mis Proyectos</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp">Mis Proyectos</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="project-list"></div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-16 bg-gray-900 portfolio-section">
+        <section id="about" class="py-12 sm:py-16 bg-gray-900 portfolio-section about-section">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp">Sobre Mí</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp">Sobre Mí</h2>
                 <div class="flex flex-col md:flex-row items-center justify-center gap-8">
                     <!-- Profile Image -->
-                    <div class="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shadow-lg transform hover:scale-105 transition duration-300">
+                    <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg transform hover:scale-105 transition duration-300">
                         <img src="img/fotogian.jpg" alt="Foto de perfil de Gianluca Pasquinelli, desarrollador Frontend" class="w-full h-full object-cover object-center" loading="lazy">
                     </div>
                     <!-- About Text -->
                     <div class="text-center md:text-left max-w-xl">
-                        <p class="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
-                            Soy <span class="font-semibold text-cyan-400">Gianluca Pasquinelli</span>,Técnico en Análisis de Sistemas y Desarrollador Frontend, enfocado en construir soluciones digitales intuitivas, eficientes y centradas en el usuario. Me caracterizo por un pensamiento analítico, una fuerte orientación a la resolución de problemas y un compromiso con el trabajo en equipo. Apasionado por la innovación y el aprendizaje continuo, busco generar un impacto real a través del desarrollo de software de calidad.
+                        <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
+                            Soy <span class="font-semibold text-cyan-400">Gianluca Pasquinelli</span>, Técnico en Análisis de Sistemas y Desarrollador Frontend, enfocado en construir soluciones digitales intuitivas, eficientes y centradas en el usuario. Me caracterizo por un pensamiento analítico, una fuerte orientación a la resolución de problemas y un compromiso con el trabajo en equipo. Apasionado por la innovación y el aprendizaje continuo, busco generar un impacto real a través del desarrollo de software de calidad.
                         </p>
                     </div>
                 </div>
 
                 <!-- Education Section -->
                 <div class="mt-12">
-                    <h3 class="text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp">Educación</h3>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp">Educación</h3>
                     <div class="relative max-w-3xl mx-auto">
-                        <div class="absolute w-1 bg-cyan-500 h-full left-1/2 transform -translate-x-1/2"></div>
+                        <div class="absolute w-1 bg-cyan-500 h-full left-1/2 transform -translate-x-1/2 md:block hidden"></div>
                         <div class="space-y-12">
-                            <div class="relative flex items-center timeline-item">
-                                <div class="w-1/2 pr-8 text-right">
+                            <div class="relative flex flex-col md:flex-row items-center timeline-item">
+                                <div class="w-full md:w-1/2 pr-0 md:pr-8 text-center md:text-right">
                                     <p class="text-gray-300"><span class="font-semibold">Dante Alighieri NRO. 3154</span><br>Secundario.</p>
                                 </div>
-                                <div class="w-1/2 pl-8">
-                                    <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+                                <div class="w-full md:w-1/2 pl-0 md:pl-8">
+                                    <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 md:block hidden">
                                         <i class="fas fa-graduation-cap text-white text-sm"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="relative flex items-center timeline-item">
-                                <div class="w-1/2 pr-8">
-                                    <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+                            <div class="relative flex flex-col md:flex-row items-center timeline-item">
+                                <div class="w-full md:w-1/2 pr-0 md:pr-8">
+                                    <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 md:block hidden">
                                         <i class="fas fa-graduation-cap text-white text-sm"></i>
                                     </div>
                                 </div>
-                                <div class="w-1/2 pl-8 text-left">
+                                <div class="w-full md:w-1/2 pl-0 md:pl-8 text-center md:text-left">
                                     <p class="text-gray-300"><span class="font-semibold">Colegio Sup. "Florentino Ameghino" NRO. 47</span><br>Técnico Superior en Análisis Funcional de Sistemas Informáticos.</p>
                                 </div>
                             </div>
-                            <div class="relative flex items-center timeline-item">
-                                <div class="w-1/2 pr-8 text-right">
+                            <div class="relative flex flex-col md:flex-row items-center timeline-item">
+                                <div class="w-full md:w-1/2 pr-0 md:pr-8 text-center md:text-right">
                                     <p class="text-gray-300"><span class="font-semibold">CECLA NRO. 111</span><br>Marketing y Redes Sociales.<br>Inglés Técnico.<br>Capacitación laboral en informática orientada a tareas administrativas/ contables.</p>
                                 </div>
-                                <div class="w-1/2 pl-8">
-                                    <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+                                <div class="w-full md:w-1/2 pl-0 md:pl-8">
+                                    <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 md:block hidden">
                                         <i class="fas fa-graduation-cap text-white text-sm"></i>
                                     </div>
                                 </div>
                             </div>
-                            <div class="relative flex items-center timeline-item">
-                                <div class="w-1/2 pr-8">
-                                    <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
+                            <div class="relative flex flex-col md:flex-row items-center timeline-item">
+                                <div class="w-full md:w-1/2 pr-0 md:pr-8">
+                                    <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 md:block hidden">
                                         <i class="fas fa-graduation-cap text-white text-sm"></i>
                                     </div>
                                 </div>
-                                <div class="w-1/2 pl-8 text-left">
+                                <div class="w-full md:w-1/2 pl-0 md:pl-8 text-center md:text-left">
                                     <p class="text-gray-300"><span class="font-semibold">CECLA NRO. 25</span><br>Programación Front-End.</p>
                                 </div>
                             </div>
@@ -376,12 +497,12 @@
 
                 <!-- Skills Section -->
                 <div class="mt-12">
-                    <h3 class="text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp">Habilidades</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp">Habilidades</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto skills-grid">
                         <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
                             <div class="flex items-center mb-3">
                                 <i class="fas fa-code text-cyan-400 text-xl mr-3"></i>
-                                <h4 class="text-lg font-bold text-white">Programación</h4>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Programación</h4>
                             </div>
                             <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
                                 <li>JavaScript</li>
@@ -397,7 +518,7 @@
                         <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
                             <div class="flex items-center mb-3">
                                 <i class="fas fa-database text-cyan-400 text-xl mr-3"></i>
-                                <h4 class="text-lg font-bold text-white">Bases de Datos</h4>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Bases de Datos</h4>
                             </div>
                             <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
                                 <li>MySQL</li>
@@ -410,7 +531,7 @@
                         <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
                             <div class="flex items-center mb-3">
                                 <i class="fas fa-tools text-cyan-400 text-xl mr-3"></i>
-                                <h4 class="text-lg font-bold text-white">Herramientas</h4>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Herramientas</h4>
                             </div>
                             <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
                                 <li>Figma (UI/UX)</li>
@@ -421,7 +542,7 @@
                         <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
                             <div class="flex items-center mb-3">
                                 <i class="fas fa-globe text-cyan-400 text-xl mr-3"></i>
-                                <h4 class="text-lg font-bold text-white">Otros</h4>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Otros</h4>
                             </div>
                             <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
                                 <li>Scrum</li>
@@ -438,11 +559,11 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-16 bg-gray-800 portfolio-section">
+        <section id="contact" class="py-12 sm:py-16 bg-gray-800 portfolio-section">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl font-bold mb-8 text-cyan-400 animate-fadeInUp">Contacto</h2>
-                <p class="text-lg md:text-xl text-gray-300 mb-6 max-w-2xl mx-auto">¿Listo para colaborar? Contáctame para trabajar juntos en tu próximo proyecto.</p>
-                <div class="flex flex-wrap gap-4 justify-center">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-cyan-400 animate-fadeInUp">Contacto</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 max-w-2xl mx-auto">¿Listo para colaborar? Contáctame para trabajar juntos en tu próximo proyecto.</p>
+                <div class="flex flex-wrap gap-4 justify-center contact-buttons">
                     <a href="https://wa.me/5493471417071" target="_blank" class="inline-flex items-center bg-cyan-500 text-white py-3 px-6 rounded-lg hover:bg-cyan-600 transition text-base hover:scale-105" aria-label="Contactar por WhatsApp">
                         <i class="fab fa-whatsapp mr-2"></i> WhatsApp
                     </a>
@@ -489,11 +610,11 @@
                 repo: 'perrosygatos',
                 image: 'img/perrosygatos.png',
                 inProgress: true,
-                languages: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'SQLite'] // Respaldo
+                languages: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'SQLite']
             },
             {
                 title: 'Tienda de Motos',
-                description: 'Plataforma web optimizada para la venta de motos, con un diseño responsive que garantiza una experiencia fluida en todos los dispositivos. Ofrece una interfaz moderna, intuitiva y fácil de usar, con un catálogo interactivo que incluye filtros avanzados por marca, modelo, precio y especificaciones técnicas..',
+                description: 'Plataforma web optimizada para la venta de motos, con un diseño responsive que garantiza una experiencia fluida en todos los dispositivos. Ofrece una interfaz moderna, intuitiva y fácil de usar, con un catálogo interactivo que incluye filtros avanzados por marca, modelo, precio y especificaciones técnicas.',
                 github: 'https://github.com/Gianp2/Tienda-moto2',
                 repo: 'Tienda-Motos',
                 image: 'img/moto.png',
@@ -573,11 +694,11 @@
                 // Renderizar tarjeta
                 const cardHTML = `
                     <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-transform duration-300 hover:scale-105 project-card">
-                        <img src="${project.image}" alt="Captura de proyecto ${project.title}" class="w-full h-48 object-cover" loading="lazy">
+                        <img src="${project.image}" alt="Captura de proyecto ${project.title}" class="w-full object-cover" loading="lazy">
                         ${project.inProgress ? '<span class="project-badge">En curso</span>' : ''}
                         <div class="p-6 flex flex-col h-full">
-                            <h3 class="text-xl font-semibold mb-2 text-white">${project.title}</h3>
-                            <p class="text-gray-300 mb-4 text-sm flex-grow">${project.description}</p>
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">${project.title}</h3>
+                            <p class="text-gray-300 mb-4 text-sm sm:text-base flex-grow">${project.description}</p>
                             <div class="language-tags">
                                 ${languages.map(lang => `<span class="language-tag">${lang}</span>`).join('')}
                             </div>
