@@ -9,69 +9,74 @@
     <title>Gianluca Pasquinelli - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <style>
-        /* Reset básico para consistencia entre navegadores */
+        :root {
+            --primary: #3B82F6;
+            --secondary: #06B6D4;
+            --dark-bg: #111827;
+            --light-bg: #F9FAFB;
+            --text-dark: #F3F4F6;
+            --text-light: #1F2937;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        /* Fondo con degradado moderno y fijo */
         body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        body.light-mode {
+            background: var(--light-bg);
+            color: var(--text-light);
+        }
+        body.dark-mode {
             background: linear-gradient(135deg, #1E3A8A 0%, #111827 100%);
             background-attachment: fixed;
-            font-family: 'Inter', sans-serif;
-            color: #F3F4F6;
-            line-height: 1.6;
+            color: var(--text-dark);
         }
-
-        /* Animación para títulos */
-        h1, h2, h3 {
-            animation: fadeInUp 0.8s ease-out;
+        .portfolio-section {
+            background: rgba(31, 41, 55, 0.8);
+            border: 2px solid var(--primary);
+            backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 1.5rem auto;
+            max-width: 100%;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
         }
-
+        .light-mode .portfolio-section {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--primary);
+        }
+        .portfolio-section:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
         @keyframes fadeInUp {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-
-        /* Estilo para contenedores de secciones */
-        .portfolio-section {
-            background: rgba(31, 41, 55, 0.8);
-            border: 2px solid #3B82F6;
-            backdrop-filter: blur(8px);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1rem auto;
-            max-width: 100%;
-            width: 100%;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
         }
-
-        .portfolio-section:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Efecto hover para íconos de Font Awesome */
         .fab, .fas {
             transition: transform 0.3s ease, color 0.3s ease;
         }
-
         .fab:hover, .fas:hover {
             transform: scale(1.2);
-            color: #06B6D4;
+            color: var(--secondary);
         }
-
-        /* Estilo para la navegación */
         header nav a {
             position: relative;
             padding-bottom: 0.5rem;
         }
-
         header nav a::after {
             content: '';
             position: absolute;
@@ -79,21 +84,17 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: #06B6D4;
+            background-color: var(--secondary);
             transition: width 0.3s ease;
         }
-
         header nav a:hover::after {
             width: 100%;
         }
-
-        /* Botones personalizados */
         button, a[class*="bg-cyan-500"], a[class*="bg-teal-500"] {
             position: relative;
             overflow: hidden;
             z-index: 1;
         }
-
         button::before, a[class*="bg-cyan-500"]::before, a[class*="bg-teal-500"]::before {
             content: '';
             position: absolute;
@@ -105,50 +106,40 @@
             transition: left 0.4s ease;
             z-index: -1;
         }
-
         button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-500"]:hover::before {
             left: 100%;
         }
-
-        /* Estilo para tarjetas de proyectos */
         .project-card {
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
         }
-
         .project-card img {
             transition: transform 0.5s ease;
             object-fit: cover;
             width: 100%;
             height: 12rem;
         }
-
         .project-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
-
         .project-card:hover img {
             transform: scale(1.1);
         }
-
         .project-card .button-container {
             display: flex;
             justify-content: center;
             margin-top: auto;
             padding-top: 1rem;
         }
-
-        /* Estilo para etiquetas de lenguajes */
         .language-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-bottom: 1rem;
         }
-
         .language-tag {
             background-color: #374151;
             color: #D1D5DB;
@@ -158,12 +149,16 @@
             border-radius: 0.25rem;
             transition: background-color 0.3s ease;
         }
-
+        .light-mode .language-tag {
+            background-color: #E5E7EB;
+            color: #1F2937;
+        }
         .language-tag:hover {
             background-color: #4B5563;
         }
-
-        /* Badge para proyectos en curso */
+        .light-mode .language-tag:hover {
+            background-color: #D1D5DB;
+        }
         .project-badge {
             position: absolute;
             top: 10px;
@@ -175,27 +170,24 @@
             padding: 0.25rem 0.5rem;
             border-radius: 0.25rem;
         }
-
-        /* Estilo para la línea de tiempo educativa */
+        .light-mode .project-badge {
+            color: #FFFFFF;
+        }
         .timeline-item {
             position: relative;
             animation: fadeInUp 1s ease-out;
         }
-
         .timeline-item .bg-cyan-500 {
             transition: background-color 0.3s ease;
         }
-
         .timeline-item:hover .bg-cyan-500 {
-            background-color: #3B82F6;
+            background-color: var(--primary);
         }
-
-        /* Botón de volver arriba */
         #scrollTopBtn {
             position: fixed;
             bottom: 1.5rem;
             right: 1.5rem;
-            background-color: #06B6D4;
+            background-color: var(--secondary);
             color: #FFFFFF;
             width: 3rem;
             height: 3rem;
@@ -203,186 +195,114 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow);
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
-
         #scrollTopBtn.visible {
             opacity: 1;
         }
-
         #scrollTopBtn:hover {
             transform: scale(1.1);
             background-color: #0891B2;
         }
-
-        /* Responsividad */
+        #themeToggle {
+            background-color: var(--secondary);
+            color: #FFFFFF;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        #themeToggle:hover {
+            transform: scale(1.1);
+            background-color: #0891B2;
+        }
         @media (max-width: 1280px) {
             .portfolio-section {
-                padding: 1.25rem;
-                margin: 0.75rem;
+                padding: 1.5rem;
+                margin: 1rem;
             }
-
-            h1 {
-                font-size: 2.25rem;
-            }
-
-            h2 {
-                font-size: 1.875rem;
-            }
-
-            h3 {
-                font-size: 1.5rem;
-            }
-
-            .project-card img {
-                height: 10rem;
-            }
+            h1 { font-size: 2.25rem; }
+            h2 { font-size: 1.875rem; }
+            h3 { font-size: 1.5rem; }
+            .project-card img { height: 10rem; }
         }
-
         @media (max-width: 1024px) {
             header .container {
                 flex-direction: column;
                 gap: 1rem;
                 text-align: center;
             }
-
             header nav {
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 1rem;
             }
-
-            header nav a {
-                font-size: 1rem;
-            }
-
-            .project-card img {
-                height: 9rem;
-            }
+            header nav a { font-size: 1rem; }
+            .project-card img { height: 9rem; }
         }
-
         @media (max-width: 768px) {
             .portfolio-section {
                 padding: 1rem;
                 margin: 0.5rem;
                 border-width: 1px;
             }
-
-            h1 {
-                font-size: 1.75rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            h3 {
-                font-size: 1.25rem;
-            }
-
-            .project-card img {
-                height: 8rem;
-            }
-
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.25rem; }
+            .project-card img { height: 8rem; }
             .about-section .flex {
                 flex-direction: column;
                 align-items: center;
             }
-
             .about-section .w-48 {
                 width: 10rem;
                 height: 10rem;
             }
-
             .skills-grid {
                 grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
             }
         }
-
         @media (max-width: 640px) {
-            .portfolio-section {
-                padding: 0.75rem;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            h2 {
-                font-size: 1.25rem;
-            }
-
-            h3 {
-                font-size: 1.125rem;
-            }
-
-            .project-card img {
-                height: 7rem;
-            }
-
-            .timeline-item .w-1\/2 {
+            .portfolio-section { padding: 0.75rem; }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.25rem; }
+            h3 { font-size: 1.125rem; }
+            .project-card img { height: 7rem; }
+            .timeline-item .w-1/2 {
                 width: 100%;
                 text-align: center;
                 padding: 0;
             }
-
-            .timeline-item .absolute {
-                display: none;
-            }
-
-            .timeline-item p {
-                font-size: 0.875rem;
-            }
-
+            .timeline-item .absolute { display: none; }
+            .timeline-item p { font-size: 0.875rem; }
             .language-tag {
                 font-size: 0.7rem;
                 padding: 0.2rem 0.4rem;
             }
-
-            header nav {
-                gap: 0.75rem;
-            }
-
-            header nav a {
-                font-size: 0.875rem;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
+            header nav { gap: 0.75rem; }
+            header nav a { font-size: 0.875rem; }
+            .contact-buttons { flex-direction: column; gap: 0.75rem; }
         }
-
         @media (max-width: 480px) {
             .portfolio-section {
                 padding: 0.5rem;
                 margin: 0.25rem;
             }
-
-            h1 {
-                font-size: 1.25rem;
-            }
-
-            h2 {
-                font-size: 1.125rem;
-            }
-
-            h3 {
-                font-size: 1rem;
-            }
-
-            .project-card img {
-                height: 6rem;
-            }
-
+            h1 { font-size: 1.25rem; }
+            h2 { font-size: 1.125rem; }
+            h3 { font-size: 1rem; }
+            .project-card img { height: 6rem; }
             .about-section .w-48 {
                 width: 8rem;
                 height: 8rem;
             }
-
             .contact-buttons a {
                 font-size: 0.875rem;
                 padding: 0.5rem 1rem;
@@ -390,70 +310,66 @@
         }
     </style>
 </head>
-
-<body class="bg-gray-900 text-white font-sans">
-    <!-- Header -->
-    <header class="bg-gray-800 py-4 sticky top-0 z-10 shadow-lg">
+<body class="dark-mode">
+    <header class="bg-gray-800 py-4 sticky top-0 z-10 shadow-lg light-mode:bg-gray-100">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-cyan-400">Gianluca Pasquinelli</h1>
             <nav aria-label="Navegación principal" class="flex items-center space-x-6">
-                <a href="#projects" class="text-lg hover:text-cyan-400 transition smooth-scroll">Proyectos</a>
-                <a href="#about" class="text-lg hover:text-cyan-400 transition smooth-scroll">Sobre Mí</a>
-                <a href="#contact" class="text-lg hover:text-cyan-400 transition smooth-scroll">Contacto</a>
+                <a href="#projects" class="text-lg hover:text-cyan-400 transition smooth-scroll light-mode:text-gray-800 light-mode:hover:text-cyan-600">Proyectos</a>
+                <a href="#about" class="text-lg hover:text-cyan-400 transition smooth-scroll light-mode:text-gray-800 light-mode:hover:text-cyan-600">Sobre Mí</a>
+                <a href="#contact" class="text-lg hover:text-cyan-400 transition smooth-scroll light-mode:text-gray-800 light-mode:hover:text-cyan-600">Contacto</a>
                 <a href="CV-PasquinelliGianluca.pdf" target="_blank" class="inline-flex items-center bg-cyan-500 text-white py-2 px-4 rounded-lg hover:bg-cyan-600 transition text-base" aria-label="Descargar currículum">
                     <i class="fas fa-file-pdf mr-2"></i> Currículum
                 </a>
+                <button id="themeToggle" aria-label="Cambiar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
-        <section class="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 portfolio-section">
+        <section class="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 portfolio-section light-mode:from-white light-mode:to-gray-100">
             <div class="container mx-auto px-4 text-center animate-fadeInUp">
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
                     <span id="typed-text"></span>
                 </h2>
-                <p class="text-base sm:text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">IT Functional Analyst & Front-End Developer | Trainee.</p>
+                <p class="text-base sm:text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto light-mode:text-gray-600">IT Functional Analyst & Front-End Developer | Trainee.</p>
                 <a href="#projects" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition text-base sm:text-lg hover:scale-105 smooth-scroll" aria-label="Explorar proyectos">Explorar Proyectos</a>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-12 sm:py-16 bg-gray-800 portfolio-section">
+        <section id="projects" class="py-12 sm:py-16 bg-gray-800 portfolio-section light-mode:bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp">Mis Proyectos</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp light-mode:text-cyan-600">Mis Proyectos</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="project-list"></div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="py-12 sm:py-16 bg-gray-900 portfolio-section about-section">
+        <section id="about" class="py-12 sm:py-16 bg-gray-900 portfolio-section about-section light-mode:bg-gray-50">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp">Sobre Mí</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp light-mode:text-cyan-600">Sobre Mí</h2>
                 <div class="flex flex-col md:flex-row items-center justify-center gap-8">
-                    <!-- Profile Image -->
                     <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg transform hover:scale-105 transition duration-300">
                         <img src="img/fotogian.jpg" alt="Foto de perfil de Gianluca Pasquinelli, desarrollador Frontend" class="w-full h-full object-cover object-center" loading="lazy">
                     </div>
-                    <!-- About Text -->
                     <div class="text-center md:text-left max-w-xl">
-                        <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
-                            Soy <span class="font-semibold text-cyan-400">Gianluca Pasquinelli</span>, Técnico en Análisis de Sistemas y Desarrollador Frontend, enfocado en construir soluciones digitales intuitivas, eficientes y centradas en el usuario. Me caracterizo por un pensamiento analítico, una fuerte orientación a la resolución de problemas y un compromiso con el trabajo en equipo. Apasionado por la innovación y el aprendizaje continuo, busco generar un impacto real a través del desarrollo de software de calidad.
+                        <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 leading-relaxed light-mode:text-gray-600">
+                            Soy <span class="font-semibold text-cyan-400 light-mode:text-cyan-600">Gianluca Pasquinelli</span>, Técnico en Análisis de Sistemas y Desarrollador Frontend, enfocado en construir soluciones digitales intuitivas, eficientes y centradas en el usuario. Me caracterizo por un pensamiento analítico, una fuerte orientación a la resolución de problemas y un compromiso con el trabajo en equipo. Apasionado por la innovación y el aprendizaje continuo, busco generar un impacto real a través del desarrollo de software de calidad.
+                        </p>
+                        <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 leading-relaxed light-mode:text-gray-600">
+                            Mis valores incluyen la integridad, la colaboración y la excelencia. Me motiva transformar ideas en productos funcionales y visualmente atractivos. Domino herramientas como React, Node.js, Figma y Git, y estoy siempre explorando nuevas tecnologías.
                         </p>
                     </div>
                 </div>
-
-                <!-- Education Section -->
                 <div class="mt-12">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp">Educación</h3>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp light-mode:text-cyan-600">Educación y Experiencia</h3>
                     <div class="relative max-w-3xl mx-auto">
                         <div class="absolute w-1 bg-cyan-500 h-full left-1/2 transform -translate-x-1/2 md:block hidden"></div>
                         <div class="space-y-12">
                             <div class="relative flex flex-col md:flex-row items-center timeline-item">
                                 <div class="w-full md:w-1/2 pr-0 md:pr-8 text-center md:text-right">
-                                    <p class="text-gray-300"><span class="font-semibold">Dante Alighieri NRO. 3154</span><br>Secundario.</p>
+                                    <p class="text-gray-300 light-mode:text-gray-600"><span class="font-semibold">Dante Alighieri NRO. 3154</span><br>Secundario.</p>
                                 </div>
                                 <div class="w-full md:w-1/2 pl-0 md:pl-8">
                                     <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 md:block hidden">
@@ -466,12 +382,12 @@
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/2 pl-0 md:pl-8 text-center md:text-left">
-                                    <p class="text-gray-300"><span class="font-semibold">Colegio Sup. "Florentino Ameghino" NRO. 47</span><br>Técnico Superior en Análisis Funcional de Sistemas Informáticos.</p>
+                                    <p class="text-gray-300 light-mode:text-gray-600"><span class="font-semibold">Colegio Sup. "Florentino Ameghino" NRO. 47</span><br>Técnico Superior en Análisis Funcional de Sistemas Informáticos.</p>
                                 </div>
                             </div>
                             <div class="relative flex flex-col md:flex-row items-center timeline-item">
                                 <div class="w-full md:w-1/2 pr-0 md:pr-8 text-center md:text-right">
-                                    <p class="text-gray-300"><span class="font-semibold">CECLA NRO. 111</span><br>Marketing y Redes Sociales.<br>Inglés Técnico.<br>Capacitación laboral en informática orientada a tareas administrativas/ contables.</p>
+                                    <p class="text-gray-300 light-mode:text-gray-600"><span class="font-semibold">CECLA NRO. 111</span><br>Marketing y Redes Sociales.<br>Inglés Técnico.<br>Capacitación laboral en informática orientada a tareas administrativas/ contables.</p>
                                 </div>
                                 <div class="w-full md:w-1/2 pl-0 md:pl-8">
                                     <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 md:block hidden">
@@ -484,23 +400,21 @@
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/2 pl-0 md:pl-8 text-center md:text-left">
-                                    <p class="text-gray-300"><span class="font-semibold">CECLA NRO. 25</span><br>Programación Front-End.</p>
+                                    <p class="text-gray-300 light-mode:text-gray-600"><span class="font-semibold">CECLA NRO. 25</span><br>Programación Front-End.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Skills Section -->
                 <div class="mt-12">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp">Habilidades</h3>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp light-mode:text-cyan-600">Habilidades y Stack Tecnológico</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto skills-grid">
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 light-mode:bg-white">
                             <div class="flex items-center mb-3">
-                                <i class="fas fa-code text-cyan-400 text-xl mr-3"></i>
-                                <h4 class="text-base sm:text-lg font-bold text-white">Programación</h4>
+                                <i class="fas fa-code text-cyan-400 text-xl mr-3 light-mode:text-cyan-600"></i>
+                                <h4 class="text-base sm:text-lg font-bold text-white light-mode:text-gray-800">Programación</h4>
                             </div>
-                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
+                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm light-mode:text-gray-600">
                                 <li>JavaScript</li>
                                 <li>TypeScript</li>
                                 <li>Python</li>
@@ -510,35 +424,35 @@
                                 <li>Diseño Responsivo</li>
                             </ul>
                         </div>
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 light-mode:bg-white">
                             <div class="flex items-center mb-3">
-                                <i class="fas fa-database text-cyan-400 text-xl mr-3"></i>
-                                <h4 class="text-base sm:text-lg font-bold text-white">Bases de Datos</h4>
+                                <i class="fas fa-database text-cyan-400 text-xl mr-3 light-mode:text-cyan-600"></i>
+                                <h4 class="text-base sm:text-lg font-bold text-white light-mode:text-gray-800">Bases de Datos</h4>
                             </div>
-                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
+                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm light-mode:text-gray-600">
                                 <li>MySQL</li>
                                 <li>SQLite</li>
                                 <li>MongoDB</li>
                                 <li>Firebase</li>
                             </ul>
                         </div>
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 light-mode:bg-white">
                             <div class="flex items-center mb-3">
-                                <i class="fas fa-tools text-cyan-400 text-xl mr-3"></i>
-                                <h4 class="text-base sm:text-lg font-bold text-white">Herramientas</h4>
+                                <i class="fas fa-tools text-cyan-400 text-xl mr-3 light-mode:text-cyan-600"></i>
+                                <h4 class="text-base sm:text-lg font-bold text-white light-mode:text-gray-800">Herramientas</h4>
                             </div>
-                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
+                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm light-mode:text-gray-600">
                                 <li>Figma (UI/UX)</li>
                                 <li>VS Code</li>
                                 <li>Git / GitHub</li>
                             </ul>
                         </div>
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 light-mode:bg-white">
                             <div class="flex items-center mb-3">
-                                <i class="fas fa-globe text-cyan-400 text-xl mr-3"></i>
-                                <h4 class="text-base sm:text-lg font-bold text-white">Otros</h4>
+                                <i class="fas fa-globe text-cyan-400 text-xl mr-3 light-mode:text-cyan-600"></i>
+                                <h4 class="text-base sm:text-lg font-bold text-white light-mode:text-gray-800">Otros</h4>
                             </div>
-                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
+                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm light-mode:text-gray-600">
                                 <li>Scrum</li>
                                 <li>UML</li>
                                 <li>Gestión de proyectos</li>
@@ -552,11 +466,10 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-12 sm:py-16 bg-gray-800 portfolio-section">
+        <section id="contact" class="py-12 sm:py-16 bg-gray-800 portfolio-section light-mode:bg-white">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-cyan-400 animate-fadeInUp">Contacto</h2>
-                <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 max-w-2xl mx-auto">¿Listo para colaborar? Contáctame para trabajar juntos en tu próximo proyecto.</p>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-cyan-400 animate-fadeInUp light-mode:text-cyan-600">Contacto</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 max-w-2xl mx-auto light-mode:text-gray-600">¿Listo para colaborar? Contáctame para trabajar juntos en tu próximo proyecto.</p>
                 <div class="flex flex-wrap gap-4 justify-center contact-buttons">
                     <a href="https://wa.me/5493471417071" target="_blank" class="inline-flex items-center bg-cyan-500 text-white py-3 px-6 rounded-lg hover:bg-cyan-600 transition text-base hover:scale-105" aria-label="Contactar por WhatsApp">
                         <i class="fab fa-whatsapp mr-2"></i> WhatsApp
@@ -565,36 +478,42 @@
                         <i class="fas fa-envelope mr-2"></i> Enviar Correo
                     </a>
                 </div>
+                <div class="mt-8 max-w-lg mx-auto">
+                    <div class="bg-gray-700 p-6 rounded-xl shadow-lg light-mode:bg-white">
+                        <h3 class="text-xl font-semibold mb-4 text-cyan-400 light-mode:text-cyan-600">Envíame un Mensaje</h3>
+                        <div class="space-y-4">
+                            <input type="text" id="name" placeholder="Tu Nombre" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:border-cyan-400 light-mode:bg-gray-100 light-mode:text-gray-800 light-mode:border-gray-300">
+                            <input type="email" id="email" placeholder="Tu Correo" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:border-cyan-400 light-mode:bg-gray-100 light-mode:text-gray-800 light-mode:border-gray-300">
+                            <textarea id="message" placeholder="Tu Mensaje" rows="4" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:border-cyan-400 light-mode:bg-gray-100 light-mode:text-gray-800 light-mode:border-gray-300"></textarea>
+                            <button id="submitContact" class="w-full bg-cyan-500 text-white py-3 px-6 rounded-lg hover:bg-cyan-600 transition hover:scale-105">Enviar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 py-6">
+    <footer class="bg-gray-900 py-6 light-mode:bg-gray-100">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-gray-400 text-sm">© 2025 Gianluca Pasquinelli. Las Parejas, Santa Fe, Argentina.</p>
+            <p class="text-gray-400 text-sm light-mode:text-gray-600">© 2025 Gianluca Pasquinelli. Las Parejas, Santa Fe, Argentina.</p>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
     <button id="scrollTopBtn" aria-label="Volver arriba">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- JavaScript -->
     <script>
-        // Typed.js Animation
         new Typed('#typed-text', {
             strings: [
                 'Analista de Sistemas especializado en crear soluciones tecnológicas innovadoras y eficientes.',
-                'Especialista en desarrollo Front-End con atención al detalle y experiencia en interfaces intuitivas.',
+                'Especialista en desarrollo Front-End con atención al detalle y experiencia en interfaces intuitivas.'
             ],
             typeSpeed: 60,
             backSpeed: 40,
             loop: true
         });
 
-        // Projects data
         const projects = [
             {
                 title: 'Perros y Gatos',
@@ -652,18 +571,10 @@
             }
         ];
 
-        // Función para obtener lenguajes desde la API de GitHub
         async function fetchLanguages(owner, repo) {
             try {
-                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/languages`, {
-                    headers: {
-                        // Opcional: Agrega un token para aumentar el límite de solicitudes
-                        // 'Authorization': 'Bearer TU_PERSONAL_ACCESS_TOKEN'
-                    }
-                });
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.status}`);
-                }
+                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/languages`);
+                if (!response.ok) throw new Error(`Error: ${response.status}`);
                 const data = await response.json();
                 return Object.keys(data);
             } catch (error) {
@@ -672,26 +583,19 @@
             }
         }
 
-        // Renderizar proyectos
         async function renderProjects() {
             const projectList = document.getElementById('project-list');
-            projectList.innerHTML = ''; // Limpiar antes de renderizar
-
+            projectList.innerHTML = '';
             for (let project of projects) {
-                // Obtener lenguajes desde la API
                 let languages = await fetchLanguages('Gianp2', project.repo);
-                if (languages.length === 0) {
-                    languages = project.languages; // Usar lenguajes de respaldo si falla
-                }
-
-                // Renderizar tarjeta
+                if (languages.length === 0) languages = project.languages;
                 const cardHTML = `
-                    <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-transform duration-300 hover:scale-105 project-card">
+                    <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-transform duration-300 hover:scale-105 project-card light-mode:bg-white">
                         <img src="${project.image}" alt="Captura de proyecto ${project.title}" class="w-full object-cover" loading="lazy">
                         ${project.inProgress ? '<span class="project-badge">En curso</span>' : ''}
                         <div class="p-6 flex flex-col h-full">
-                            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">${project.title}</h3>
-                            <p class="text-gray-300 mb-4 text-sm sm:text-base flex-grow">${project.description}</p>
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white light-mode:text-gray-800">${project.title}</h3>
+                            <p class="text-gray-300 mb-4 text-sm sm:text-base flex-grow light-mode:text-gray-600">${project.description}</p>
                             <div class="language-tags">
                                 ${languages.map(lang => `<span class="language-tag">${lang}</span>`).join('')}
                             </div>
@@ -707,10 +611,8 @@
             }
         }
 
-        // Iniciar renderizado
         renderProjects().catch(console.error);
 
-        // Scroll to Top Button
         const scrollTopBtn = document.getElementById('scrollTopBtn');
         window.addEventListener('scroll', () => {
             scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
@@ -720,7 +622,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Smooth Scroll para enlaces de navegación
         document.querySelectorAll('.smooth-scroll').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -733,6 +634,68 @@
                     });
                 }
             });
+        });
+
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.toggle('light-mode');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
+            themeToggle.querySelector('i').classList.remove('fa-moon');
+            themeToggle.querySelector('i').classList.add('fa-sun');
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.portfolio-section, .timeline-item').forEach(el => observer.observe(el));
+
+        const submitContact = document.getElementById('submitContact');
+        submitContact.addEventListener('click', () => {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            if (name && email && message) {
+                fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Mensaje enviado con éxito!');
+                        document.getElementById('name').value = '';
+                        document.getElementById('email').value = '';
+                        document.getElementById('message').value = '';
+                    } else {
+                        alert('Error al enviar el mensaje. Por favor, intenta de nuevo.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al enviar el mensaje. Por favor, intenta de nuevo.');
+                });
+            } else {
+                alert('Por favor, completa todos los campos.');
+            }
         });
     </script>
 </body>
