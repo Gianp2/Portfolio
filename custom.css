@@ -59,7 +59,7 @@ h1, h2, h3 {
 .light-mode .portfolio-section {
     background: rgba(255, 255, 255, 0.9);
     border: 2px solid var(--primary);
-    color: var(--text-light); /* Asegura texto legible en modo claro */
+    color: var(--text-light); /* Texto legible en modo claro */
 }
 
 /* Ajuste específico para secciones con fondo de gradiente en hero */
@@ -85,6 +85,34 @@ header {
     color: var(--primary) !important;
 }
 
+/* Ajuste para la navegación */
+header nav a {
+    position: relative;
+    padding-bottom: 0.5rem;
+    transition: color 0.3s ease;
+    color: var(--text-dark); /* Color por defecto en modo oscuro */
+}
+
+.light-mode header nav a {
+    color: var(--text-light); /* Color legible en modo claro */
+    opacity: 1; /* Asegura que no desaparezcan */
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary);
+    transition: width 0.3s ease;
+}
+
+header nav a:hover::after {
+    width: 100%;
+}
+
 /* Ajuste para el footer */
 footer {
     transition: background 0.3s ease, color 0.3s ease;
@@ -107,48 +135,7 @@ footer {
     color: var(--text-light); /* Asegura legibilidad en todos los textos */
 }
 
-.portfolio-section:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-/* Efecto hover para íconos de Font Awesome */
-.fab, .fas {
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.fab:hover, .fas:hover {
-    transform: scale(1.2);
-    color: var(--secondary);
-}
-
-/* Estilo para la navegación */
-header nav a {
-    position: relative;
-    padding-bottom: 0.5rem;
-    transition: color 0.3s ease;
-}
-
-.light-mode header nav a {
-    color: var(--text-light);
-}
-
-header nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--secondary);
-    transition: width 0.3s ease;
-}
-
-header nav a:hover::after {
-    width: 100%;
-}
-
-/* Botones personalizados */
+/* Ajuste para botones y enlaces */
 button, a[class*="bg-cyan-500"], a[class*="bg-teal-500"] {
     position: relative;
     overflow: hidden;
@@ -170,6 +157,10 @@ button::before, a[class*="bg-cyan-500"]::before, a[class*="bg-teal-500"]::before
 
 button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-500"]:hover::before {
     left: 100%;
+}
+
+.light-mode button, .light-mode a[class*="bg-cyan-500"], .light-mode a[class*="bg-teal-500"] {
+    color: #FFFFFF; /* Asegura contraste en botones */
 }
 
 /* Estilo para tarjetas de proyectos */
