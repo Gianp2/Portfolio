@@ -53,12 +53,46 @@ h1, h2, h3 {
     margin: 1.5rem auto;
     max-width: 1200px;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 
 .light-mode .portfolio-section {
     background: rgba(255, 255, 255, 0.9);
     border: 2px solid var(--primary);
+    color: var(--text-light);
+}
+
+/* Ajuste específico para secciones con fondo de gradiente en hero */
+section.bg-gradient-to-b {
+    transition: background 0.3s ease;
+}
+
+.light-mode section.bg-gradient-to-b {
+    background: linear-gradient(to bottom, #FFFFFF, #E5E7EB) !important;
+}
+
+/* Ajuste para el header */
+header {
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.light-mode header {
+    background: var(--light-bg) !important;
+    color: var(--text-light);
+}
+
+.light-mode header h1 {
+    color: var(--primary) !important;
+}
+
+/* Ajuste para el footer */
+footer {
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.light-mode footer {
+    background: var(--light-bg) !important;
+    color: var(--text-light);
 }
 
 .portfolio-section:hover {
@@ -80,6 +114,11 @@ h1, h2, h3 {
 header nav a {
     position: relative;
     padding-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.light-mode header nav a {
+    color: var(--text-light);
 }
 
 header nav a::after {
@@ -102,6 +141,7 @@ button, a[class*="bg-cyan-500"], a[class*="bg-teal-500"] {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button::before, a[class*="bg-cyan-500"]::before, a[class*="bg-teal-500"]::before {
@@ -123,9 +163,13 @@ button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-5
 /* Estilo para tarjetas de proyectos */
 .project-card {
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     display: flex;
     flex-direction: column;
+}
+
+.light-mode .project-card {
+    background: #FFFFFF !important;
 }
 
 .project-card img {
@@ -160,13 +204,13 @@ button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-5
 }
 
 .language-tag {
-    background-color: #374151;
+    background-color:LifecycleException: #374151;
     color: #D1D5DB;
     font-size: 0.75rem;
     font-weight: 500;
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .light-mode .language-tag {
@@ -193,6 +237,7 @@ button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-5
     font-weight: bold;
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
+    transition: color 0.3s ease;
 }
 
 .light-mode .project-badge {
@@ -228,7 +273,7 @@ button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-5
     justify-content: center;
     box-shadow: var(--shadow);
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
 }
 
 #scrollTopBtn.visible {
@@ -261,7 +306,7 @@ button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-5
 
 /* Estilo para inputs y textarea del formulario */
 input, textarea {
-    transition: border-color 0.3s ease, background 0.3s ease;
+    transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 
 .light-mode input, .light-mode textarea {
@@ -272,6 +317,16 @@ input, textarea {
 
 .light-mode input:focus, .light-mode textarea:focus {
     border-color: var(--primary);
+}
+
+/* Ajuste para tarjetas de habilidades */
+.skills-grid > div {
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.light-mode .skills-grid > div {
+    background: #FFFFFF !important;
+    color: var(--text-light);
 }
 
 /* Responsividad */
@@ -326,9 +381,7 @@ input, textarea {
         height: 10rem;
     }
     .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr
-
-));
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     }
 }
 
