@@ -50,7 +50,7 @@ h1, h2, h3 {
     backdrop-filter: blur(8px);
     border-radius: 1rem;
     padding: 2rem;
-    margin: 1.5rem auto;
+    margin: 1rem auto;
     max-width: 1200px;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
@@ -59,7 +59,7 @@ h1, h2, h3 {
 .light-mode .portfolio-section {
     background: rgba(255, 255, 255, 0.9);
     border: 2px solid var(--primary);
-    color: var(--text-light);
+    color: var(--text-light); /* Asegura texto legible en modo claro */
 }
 
 /* Ajuste específico para secciones con fondo de gradiente en hero */
@@ -93,6 +93,18 @@ footer {
 .light-mode footer {
     background: var(--light-bg) !important;
     color: var(--text-light);
+}
+
+.light-mode footer p {
+    color: var(--text-light); /* Asegura texto legible en el footer */
+}
+
+/* Ajuste para textos dentro de secciones */
+.light-mode .portfolio-section p,
+.light-mode .timeline-item p,
+.light-mode .skills-grid ul,
+.light-mode .language-tag {
+    color: var(--text-light); /* Asegura legibilidad en todos los textos */
 }
 
 .portfolio-section:hover {
@@ -170,6 +182,7 @@ button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-5
 
 .light-mode .project-card {
     background: #FFFFFF !important;
+    color: var(--text-light); /* Asegura texto legible */
 }
 
 .project-card img {
@@ -204,7 +217,7 @@ button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-5
 }
 
 .language-tag {
-    background-color:LifecycleException: #374151;
+    background-color: #374151;
     color: #D1D5DB;
     font-size: 0.75rem;
     font-weight: 500;
@@ -215,7 +228,7 @@ button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-5
 
 .light-mode .language-tag {
     background-color: #E5E7EB;
-    color: #1F2937;
+    color: var(--text-light);
 }
 
 .language-tag:hover {
@@ -327,6 +340,11 @@ input, textarea {
 .light-mode .skills-grid > div {
     background: #FFFFFF !important;
     color: var(--text-light);
+}
+
+/* Ajuste de espaciado vertical */
+.about-section, #about, #education, #skills {
+    margin: 1rem 0; /* Reduce el espacio excesivo */
 }
 
 /* Responsividad */
