@@ -21,62 +21,78 @@
             --text-light: #1F2937;
             --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        body.light-mode {
-            background: var(--light-bg);
-            color: var(--text-light);
-        }
+
         body.dark-mode {
             background: linear-gradient(135deg, #1E3A8A 0%, #111827 100%);
             background-attachment: fixed;
             color: var(--text-dark);
         }
+
+        body.light-mode {
+            background: var(--light-bg);
+            color: var(--text-light);
+        }
+
         .portfolio-section {
             background: rgba(31, 41, 55, 0.8);
             border: 2px solid var(--primary);
             backdrop-filter: blur(8px);
             border-radius: 1rem;
             padding: 2rem;
-            margin: 1.5rem auto;
-            max-width: 100%;
+            margin: 1rem auto;
+            max-width: 1200px;
             box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
         }
+
         .light-mode .portfolio-section {
             background: rgba(255, 255, 255, 0.9);
             border: 2px solid var(--primary);
+            color: var(--text-light);
         }
+
         .portfolio-section:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+
         @keyframes fadeInUp {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+
         .animate-fadeInUp {
             animation: fadeInUp 0.8s ease-out;
         }
+
         .fab, .fas {
             transition: transform 0.3s ease, color 0.3s ease;
         }
+
         .fab:hover, .fas:hover {
             transform: scale(1.2);
             color: var(--secondary);
         }
+
         header nav a {
             position: relative;
             padding-bottom: 0.5rem;
+            color: var(--text-dark);
+            transition: color 0.3s ease, opacity 0.3s ease;
         }
+
         header nav a::after {
             content: '';
             position: absolute;
@@ -87,14 +103,23 @@
             background-color: var(--secondary);
             transition: width 0.3s ease;
         }
+
         header nav a:hover::after {
             width: 100%;
         }
+
+        .light-mode header nav a {
+            color: var(--text-light) !important;
+            opacity: 1 !important;
+        }
+
         button, a[class*="bg-cyan-500"], a[class*="bg-teal-500"] {
             position: relative;
             overflow: hidden;
             z-index: 1;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
         button::before, a[class*="bg-cyan-500"]::before, a[class*="bg-teal-500"]::before {
             content: '';
             position: absolute;
@@ -106,40 +131,57 @@
             transition: left 0.4s ease;
             z-index: -1;
         }
+
         button:hover::before, a[class*="bg-cyan-500"]:hover::before, a[class*="bg-teal-500"]:hover::before {
             left: 100%;
         }
+
+        .light-mode button, .light-mode a[class*="bg-cyan-500"], .light-mode a[class*="bg-teal-500"] {
+            color: #FFFFFF;
+        }
+
         .project-card {
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
         }
+
+        .light-mode .project-card {
+            background: #FFFFFF;
+            color: var(--text-light);
+        }
+
         .project-card img {
             transition: transform 0.5s ease;
             object-fit: cover;
             width: 100%;
             height: 12rem;
         }
+
         .project-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
+
         .project-card:hover img {
             transform: scale(1.1);
         }
+
         .project-card .button-container {
             display: flex;
             justify-content: center;
             margin-top: auto;
             padding-top: 1rem;
         }
+
         .language-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-bottom: 1rem;
         }
+
         .language-tag {
             background-color: #374151;
             color: #D1D5DB;
@@ -149,16 +191,20 @@
             border-radius: 0.25rem;
             transition: background-color 0.3s ease;
         }
+
         .light-mode .language-tag {
             background-color: #E5E7EB;
-            color: #1F2937;
+            color: var(--text-light);
         }
+
         .language-tag:hover {
             background-color: #4B5563;
         }
+
         .light-mode .language-tag:hover {
             background-color: #D1D5DB;
         }
+
         .project-badge {
             position: absolute;
             top: 10px;
@@ -170,19 +216,24 @@
             padding: 0.25rem 0.5rem;
             border-radius: 0.25rem;
         }
+
         .light-mode .project-badge {
             color: #FFFFFF;
         }
+
         .timeline-item {
             position: relative;
             animation: fadeInUp 1s ease-out;
         }
+
         .timeline-item .bg-cyan-500 {
             transition: background-color 0.3s ease;
         }
+
         .timeline-item:hover .bg-cyan-500 {
             background-color: var(--primary);
         }
+
         #scrollTopBtn {
             position: fixed;
             bottom: 1.5rem;
@@ -199,13 +250,16 @@
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
+
         #scrollTopBtn.visible {
             opacity: 1;
         }
+
         #scrollTopBtn:hover {
             transform: scale(1.1);
             background-color: #0891B2;
         }
+
         #themeToggle {
             background-color: var(--secondary);
             color: #FFFFFF;
@@ -218,10 +272,26 @@
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
+
         #themeToggle:hover {
             transform: scale(1.1);
             background-color: #0891B2;
         }
+
+        input, textarea {
+            transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+        }
+
+        .light-mode input, .light-mode textarea {
+            background-color: #F3F4F6;
+            border-color: #D1D5DB;
+            color: var(--text-light);
+        }
+
+        .light-mode input:focus, .light-mode textarea:focus {
+            border-color: var(--primary);
+        }
+
         @media (max-width: 1280px) {
             .portfolio-section {
                 padding: 1.5rem;
@@ -232,6 +302,7 @@
             h3 { font-size: 1.5rem; }
             .project-card img { height: 10rem; }
         }
+
         @media (max-width: 1024px) {
             header .container {
                 flex-direction: column;
@@ -247,6 +318,7 @@
             header nav a { font-size: 1rem; }
             .project-card img { height: 9rem; }
         }
+
         @media (max-width: 768px) {
             .portfolio-section {
                 padding: 1rem;
@@ -269,6 +341,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
             }
         }
+
         @media (max-width: 640px) {
             .portfolio-section { padding: 0.75rem; }
             h1 { font-size: 1.5rem; }
@@ -290,6 +363,7 @@
             header nav a { font-size: 0.875rem; }
             .contact-buttons { flex-direction: column; gap: 0.75rem; }
         }
+
         @media (max-width: 480px) {
             .portfolio-section {
                 padding: 0.5rem;
@@ -311,13 +385,13 @@
     </style>
 </head>
 <body class="dark-mode">
-    <header class="bg-gray-800 py-4 sticky top-0 z-10 shadow-lg light-mode:bg-gray-100">
+    <header class="bg-gray-800 py-4 sticky top-0 z-10 shadow-lg">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-cyan-400">Gianluca Pasquinelli</h1>
             <nav aria-label="Navegación principal" class="flex items-center space-x-6">
-                <a href="#projects" class="text-lg hover:text-cyan-400 transition smooth-scroll light-mode:text-gray-800 light-mode:hover:text-cyan-600">Proyectos</a>
-                <a href="#about" class="text-lg hover:text-cyan-400 transition smooth-scroll light-mode:text-gray-800 light-mode:hover:text-cyan-600">Sobre Mí</a>
-                <a href="#contact" class="text-lg hover:text-cyan-400 transition smooth-scroll light-mode:text-gray-800 light-mode:hover:text-cyan-600">Contacto</a>
+                <a href="#projects" class="text-lg hover:text-cyan-400 transition smooth-scroll">Proyectos</a>
+                <a href="#about" class="text-lg hover:text-cyan-400 transition smooth-scroll">Sobre Mí</a>
+                <a href="#contact" class="text-lg hover:text-cyan-400 transition smooth-scroll">Contacto</a>
                 <a href="CV-PasquinelliGianluca.pdf" target="_blank" class="inline-flex items-center bg-cyan-500 text-white py-2 px-4 rounded-lg hover:bg-cyan-600 transition text-base" aria-label="Descargar currículum">
                     <i class="fas fa-file-pdf mr-2"></i> Currículum
                 </a>
@@ -329,47 +403,47 @@
     </header>
 
     <main>
-        <section class="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 portfolio-section light-mode:from-white light-mode:to-gray-100">
+        <section class="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 portfolio-section">
             <div class="container mx-auto px-4 text-center animate-fadeInUp">
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
                     <span id="typed-text"></span>
                 </h2>
-                <p class="text-base sm:text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto light-mode:text-gray-600">IT Functional Analyst & Front-End Developer | Trainee.</p>
+                <p class="text-base sm:text-lg md:text-xl mb-8 text-gray-300 max-w-2xl mx-auto">IT Functional Analyst & Front-End Developer | Trainee.</p>
                 <a href="#projects" class="inline-block bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition text-base sm:text-lg hover:scale-105 smooth-scroll" aria-label="Explorar proyectos">Explorar Proyectos</a>
             </div>
         </section>
 
-        <section id="projects" class="py-12 sm:py-16 bg-gray-800 portfolio-section light-mode:bg-white">
+        <section id="projects" class="py-12 sm:py-16 bg-gray-800 portfolio-section">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp light-mode:text-cyan-600">Mis Proyectos</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp">Mis Proyectos</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="project-list"></div>
             </div>
         </section>
 
-        <section id="about" class="py-12 sm:py-16 bg-gray-900 portfolio-section about-section light-mode:bg-gray-50">
+        <section id="about" class="py-12 sm:py-16 bg-gray-900 portfolio-section about-section">
             <div class="container mx-auto px-4">
-                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp light-mode:text-cyan-600">Sobre Mí</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-cyan-400 animate-fadeInUp">Sobre Mí</h2>
                 <div class="flex flex-col md:flex-row items-center justify-center gap-8">
                     <div class="w-48 h-48 rounded-full overflow-hidden shadow-lg transform hover:scale-105 transition duration-300">
                         <img src="img/fotogian.jpg" alt="Foto de perfil de Gianluca Pasquinelli, desarrollador Frontend" class="w-full h-full object-cover object-center" loading="lazy">
                     </div>
                     <div class="text-center md:text-left max-w-xl">
-                        <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 leading-relaxed light-mode:text-gray-600">
-                            Soy <span class="font-semibold text-cyan-400 light-mode:text-cyan-600">Gianluca Pasquinelli</span>, Técnico en Análisis de Sistemas y Desarrollador Frontend, enfocado en construir soluciones digitales intuitivas, eficientes y centradas en el usuario. Me caracterizo por un pensamiento analítico, una fuerte orientación a la resolución de problemas y un compromiso con el trabajo en equipo. Apasionado por la innovación y el aprendizaje continuo, busco generar un impacto real a través del desarrollo de software de calidad.
+                        <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
+                            Soy <span class="font-semibold text-cyan-400">Gianluca Pasquinelli</span>, Técnico en Análisis de Sistemas y Desarrollador Frontend, enfocado en construir soluciones digitales intuitivas, eficientes y centradas en el usuario. Me caracterizo por un pensamiento analítico, una fuerte orientación a la resolución de problemas y un compromiso con el trabajo en equipo. Apasionado por la innovación y el aprendizaje continuo, busco generar un impacto real a través del desarrollo de software de calidad.
                         </p>
-                        <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 leading-relaxed light-mode:text-gray-600">
+                        <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
                             Mis valores incluyen la integridad, la colaboración y la excelencia. Me motiva transformar ideas en productos funcionales y visualmente atractivos. Domino herramientas como React, Node.js, Figma y Git, y estoy siempre explorando nuevas tecnologías.
                         </p>
                     </div>
                 </div>
                 <div class="mt-12">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp light-mode:text-cyan-600">Educación y Experiencia</h3>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp">Educación y Experiencia</h3>
                     <div class="relative max-w-3xl mx-auto">
                         <div class="absolute w-1 bg-cyan-500 h-full left-1/2 transform -translate-x-1/2 md:block hidden"></div>
                         <div class="space-y-12">
                             <div class="relative flex flex-col md:flex-row items-center timeline-item">
                                 <div class="w-full md:w-1/2 pr-0 md:pr-8 text-center md:text-right">
-                                    <p class="text-gray-300 light-mode:text-gray-600"><span class="font-semibold">Dante Alighieri NRO. 3154</span><br>Secundario.</p>
+                                    <p><span class="font-semibold">Dante Alighieri NRO. 3154</span><br>Secundario.</p>
                                 </div>
                                 <div class="w-full md:w-1/2 pl-0 md:pl-8">
                                     <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 md:block hidden">
@@ -382,12 +456,12 @@
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/2 pl-0 md:pl-8 text-center md:text-left">
-                                    <p class="text-gray-300 light-mode:text-gray-600"><span class="font-semibold">Colegio Sup. "Florentino Ameghino" NRO. 47</span><br>Técnico Superior en Análisis Funcional de Sistemas Informáticos.</p>
+                                    <p><span class="font-semibold">Colegio Sup. "Florentino Ameghino" NRO. 47</span><br>Técnico Superior en Análisis Funcional de Sistemas Informáticos.</p>
                                 </div>
                             </div>
                             <div class="relative flex flex-col md:flex-row items-center timeline-item">
                                 <div class="w-full md:w-1/2 pr-0 md:pr-8 text-center md:text-right">
-                                    <p class="text-gray-300 light-mode:text-gray-600"><span class="font-semibold">CECLA NRO. 111</span><br>Marketing y Redes Sociales.<br>Inglés Técnico.<br>Capacitación laboral en informática orientada a tareas administrativas/ contables.</p>
+                                    <p><span class="font-semibold">CECLA NRO. 111</span><br>Marketing y Redes Sociales.<br>Inglés Técnico.<br>Capacitación laboral en informática orientada a tareas administrativas/ contables.</p>
                                 </div>
                                 <div class="w-full md:w-1/2 pl-0 md:pl-8">
                                     <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 md:block hidden">
@@ -400,21 +474,21 @@
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/2 pl-0 md:pl-8 text-center md:text-left">
-                                    <p class="text-gray-300 light-mode:text-gray-600"><span class="font-semibold">CECLA NRO. 25</span><br>Programación Front-End.</p>
+                                    <p><span class="font-semibold">CECLA NRO. 25</span><br>Programación Front-End.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mt-12">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp light-mode:text-cyan-600">Habilidades y Stack Tecnológico</h3>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-center mb-8 text-cyan-400 animate-fadeInUp">Habilidades y Stack Tecnológico</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto skills-grid">
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 light-mode:bg-white">
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
                             <div class="flex items-center mb-3">
-                                <i class="fas fa-code text-cyan-400 text-xl mr-3 light-mode:text-cyan-600"></i>
-                                <h4 class="text-base sm:text-lg font-bold text-white light-mode:text-gray-800">Programación</h4>
+                                <i class="fas fa-code text-cyan-400 text-xl mr-3"></i>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Programación</h4>
                             </div>
-                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm light-mode:text-gray-600">
+                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
                                 <li>JavaScript</li>
                                 <li>TypeScript</li>
                                 <li>Python</li>
@@ -424,35 +498,35 @@
                                 <li>Diseño Responsivo</li>
                             </ul>
                         </div>
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 light-mode:bg-white">
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
                             <div class="flex items-center mb-3">
-                                <i class="fas fa-database text-cyan-400 text-xl mr-3 light-mode:text-cyan-600"></i>
-                                <h4 class="text-base sm:text-lg font-bold text-white light-mode:text-gray-800">Bases de Datos</h4>
+                                <i class="fas fa-database text-cyan-400 text-xl mr-3"></i>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Bases de Datos</h4>
                             </div>
-                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm light-mode:text-gray-600">
+                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
                                 <li>MySQL</li>
                                 <li>SQLite</li>
                                 <li>MongoDB</li>
                                 <li>Firebase</li>
                             </ul>
                         </div>
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 light-mode:bg-white">
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
                             <div class="flex items-center mb-3">
-                                <i class="fas fa-tools text-cyan-400 text-xl mr-3 light-mode:text-cyan-600"></i>
-                                <h4 class="text-base sm:text-lg font-bold text-white light-mode:text-gray-800">Herramientas</h4>
+                                <i class="fas fa-tools text-cyan-400 text-xl mr-3"></i>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Herramientas</h4>
                             </div>
-                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm light-mode:text-gray-600">
+                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
                                 <li>Figma (UI/UX)</li>
                                 <li>VS Code</li>
                                 <li>Git / GitHub</li>
                             </ul>
                         </div>
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105 light-mode:bg-white">
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform duration-300 hover:scale-105">
                             <div class="flex items-center mb-3">
-                                <i class="fas fa-globe text-cyan-400 text-xl mr-3 light-mode:text-cyan-600"></i>
-                                <h4 class="text-base sm:text-lg font-bold text-white light-mode:text-gray-800">Otros</h4>
+                                <i class="fas fa-globe text-cyan-400 text-xl mr-3"></i>
+                                <h4 class="text-base sm:text-lg font-bold text-white">Otros</h4>
                             </div>
-                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm light-mode:text-gray-600">
+                            <ul class="text-gray-300 list-disc list-inside space-y-1 text-sm">
                                 <li>Scrum</li>
                                 <li>UML</li>
                                 <li>Gestión de proyectos</li>
@@ -466,10 +540,10 @@
             </div>
         </section>
 
-        <section id="contact" class="py-12 sm:py-16 bg-gray-800 portfolio-section light-mode:bg-white">
+        <section id="contact" class="py-12 sm:py-16 bg-gray-800 portfolio-section">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-cyan-400 animate-fadeInUp light-mode:text-cyan-600">Contacto</h2>
-                <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 max-w-2xl mx-auto light-mode:text-gray-600">¿Listo para colaborar? Contáctame para trabajar juntos en tu próximo proyecto.</p>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-cyan-400 animate-fadeInUp">Contacto</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 max-w-2xl mx-auto">¿Listo para colaborar? Contáctame para trabajar juntos en tu próximo proyecto.</p>
                 <div class="flex flex-wrap gap-4 justify-center contact-buttons">
                     <a href="https://wa.me/5493471417071" target="_blank" class="inline-flex items-center bg-cyan-500 text-white py-3 px-6 rounded-lg hover:bg-cyan-600 transition text-base hover:scale-105" aria-label="Contactar por WhatsApp">
                         <i class="fab fa-whatsapp mr-2"></i> WhatsApp
@@ -478,15 +552,13 @@
                         <i class="fas fa-envelope mr-2"></i> Enviar Correo
                     </a>
                 </div>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-900 py-6 light-mode:bg-gray-100">
+    <footer class="bg-gray-900 py-6">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-gray-400 text-sm light-mode:text-gray-600">© 2025 Gianluca Pasquinelli. Las Parejas, Santa Fe, Argentina.</p>
+            <p class="text-gray-400 text-sm">© 2025 Gianluca Pasquinelli. Las Parejas, Santa Fe, Argentina.</p>
         </div>
     </footer>
 
@@ -581,12 +653,12 @@
                 let languages = await fetchLanguages('Gianp2', project.repo);
                 if (languages.length === 0) languages = project.languages;
                 const cardHTML = `
-                    <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-transform duration-300 hover:scale-105 project-card light-mode:bg-white">
+                    <div class="bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-transform duration-300 hover:scale-105 project-card">
                         <img src="${project.image}" alt="Captura de proyecto ${project.title}" class="w-full object-cover" loading="lazy">
                         ${project.inProgress ? '<span class="project-badge">En curso</span>' : ''}
                         <div class="p-6 flex flex-col h-full">
-                            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white light-mode:text-gray-800">${project.title}</h3>
-                            <p class="text-gray-300 mb-4 text-sm sm:text-base flex-grow light-mode:text-gray-600">${project.description}</p>
+                            <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">${project.title}</h3>
+                            <p class="text-gray-300 mb-4 text-sm sm:text-base flex-grow">${project.description}</p>
                             <div class="language-tags">
                                 ${languages.map(lang => `<span class="language-tag">${lang}</span>`).join('')}
                             </div>
@@ -658,36 +730,6 @@
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.portfolio-section, .timeline-item').forEach(el => observer.observe(el));
-
-        const submitContact = document.getElementById('submitContact');
-        submitContact.addEventListener('click', () => {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            if (name && email && message) {
-                fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, message })
-                })
-                .then(response => {
-                    if (response.ok) {
-                        alert('Mensaje enviado con éxito!');
-                        document.getElementById('name').value = '';
-                        document.getElementById('email').value = '';
-                        document.getElementById('message').value = '';
-                    } else {
-                        alert('Error al enviar el mensaje. Por favor, intenta de nuevo.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Error al enviar el mensaje. Por favor, intenta de nuevo.');
-                });
-            } else {
-                alert('Por favor, completa todos los campos.');
-            }
-        });
     </script>
 </body>
 </html>
