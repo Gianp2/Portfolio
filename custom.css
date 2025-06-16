@@ -1,13 +1,11 @@
 :root {
-    --primary: #1E40AF; /* Deep, vibrant blue for a techy feel */
-    --secondary: #A78BFA; /* Soft purple for accents */
-    --accent: #34D399; /* Bright teal for highlights */
-    --dark-bg: #0F172A; /* Dark slate for a modern, sleek background */
-    --light-bg: #F1F5F9; /* Soft off-white for light mode */
-    --text-dark: #E2E8F0; /* Light gray for dark mode text */
-    --text-light: #1E293B; /* Dark slate for light mode text */
+    --primary: #1E40AF;
+    --secondary: #A78BFA;
+    --accent: #34D399;
+    --light-bg: #F1F5F9;
+    --text-light: #1E293B;
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
-    --glass-bg: rgba(255, 255, 255, 0.05); /* Más transparente para ver partículas */
+    --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
@@ -18,7 +16,7 @@
     box-sizing: border-box;
 }
 
-/* Fondo y tipografía base */
+/* Fondo, tipografía base y partículas */
 body {
     font-family: 'Poppins', 'Inter', -apple-system, sans-serif;
     font-weight: 400;
@@ -29,12 +27,26 @@ body {
     position: relative;
 }
 
-body.dark-mode {
-    background: var(--dark-bg);
-    color: var(--text-dark);
+/* Partículas siempre activas */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(circle, var(--accent) 3%, transparent 3.5%) 0 0 / 25px 25px;
+    animation: particles 8s linear infinite;
 }
 
-/* Contenedores de secciones con glassmorphism */
+@keyframes particles {
+    0% { background-position: 0 0; }
+    100% { background-position: 25px 25px; }
+}
+
+/* Contenedores de secciones */
 .portfolio-section {
     background: var(--glass-bg);
     border: var(--glass-border);
@@ -49,7 +61,8 @@ body.dark-mode {
     z-index: 1;
 }
 
-.light-mode .portfolio-section {
+/* Fondo claro específico para tarjetas */
+.portfolio-section {
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -62,16 +75,12 @@ body.dark-mode {
 
 /* Header */
 header {
-    background: rgba(15, 23, 42, 0.8); /* Más transparente */
+    background: rgba(255, 255, 255, 0.95);
     position: sticky;
     top: 0;
     z-index: 50;
     backdrop-filter: blur(10px);
     transition: background 0.4s ease;
-}
-
-.light-mode header {
-    background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -84,13 +93,9 @@ header h1 {
 header nav a {
     position: relative;
     padding: 0.75rem 1rem;
-    color: var(--text-dark);
+    color: var(--text-light);
     font-weight: 500;
     transition: color 0.3s ease;
-}
-
-.light-mode header nav a {
-    color: var(--text-light);
 }
 
 header nav a::after {
@@ -111,18 +116,13 @@ header nav a:hover::after {
 
 /* Footer */
 footer {
-    background: rgba(15, 23, 42, 0.8); /* Más transparente */
-    color: var(--text-dark);
+    background: var(--light-bg);
+    color: var(--text-light);
     padding: 2rem;
     text-align: center;
     transition: background 0.4s ease;
     position: relative;
     z-index: 1;
-}
-
-.light-mode footer {
-    background: var(--light-bg);
-    color: var(--text-light);
 }
 
 /* Botones con neumorphism */
@@ -161,18 +161,13 @@ button:hover::before, a[class*="bg-"]:hover::before {
 
 /* Tarjetas de proyectos */
 .project-card {
-    background: var(--glass-bg);
-    border: var(--glass-border);
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 1rem;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     z-index: 1;
-}
-
-.light-mode .project-card {
-    background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .project-card:hover {
@@ -193,20 +188,15 @@ button:hover::before, a[class*="bg-"]:hover::before {
 
 /* Etiquetas de lenguajes */
 .language-tag {
-    background: var(--glass-bg);
-    border: var(--glass-border);
-    color: var(--text-dark);
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-light);
     font-size: 0.85rem;
     padding: 0.3rem 0.75rem;
     border-radius: 0.375rem;
     transition: background 0.3s ease;
     position: relative;
     z-index: 1;
-}
-
-.light-mode .language-tag {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--text-light);
 }
 
 .language-tag:hover {
@@ -237,7 +227,7 @@ button:hover::before, a[class*="bg-"]:hover::before {
     background: var(--accent);
 }
 
-/* Botón de volver arriba */
+/* Botón volver arriba */
 #scrollTopBtn {
     background: var(--primary);
     color: #FFFFFF;
@@ -259,7 +249,7 @@ button:hover::before, a[class*="bg-"]:hover::before {
     background: var(--secondary);
 }
 
-/* Toggle de tema */
+/* Toggle de tema (opcional) */
 #themeToggle {
     background: var(--primary);
     color: #FFFFFF;
@@ -279,20 +269,14 @@ button:hover::before, a[class*="bg-"]:hover::before {
 
 /* Formularios */
 input, textarea {
-    background: var(--glass-bg);
-    border: var(--glass-border);
+    background: #F3F4F6;
+    border: 1px solid #D1D5DB;
     border-radius: 0.5rem;
     padding: 0.75rem;
-    color: var(--text-dark);
+    color: var(--text-light);
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
-}
-
-.light-mode input, .light-mode textarea {
-    background: #F3F4F6;
-    border: 1px solid #D1D5DB;
-    color: var(--text-light);
 }
 
 input:focus, textarea:focus {
@@ -300,7 +284,7 @@ input:focus, textarea:focus {
     box-shadow: 0 0 8px rgba(52, 211, 153, 0.3);
 }
 
-/* Animación para títulos */
+/* Animaciones para títulos */
 h1, h2, h3 {
     font-weight: 600;
     letter-spacing: -0.025em;
@@ -350,24 +334,4 @@ h3 { font-size: 1.5rem; }
 @media (max-width: 480px) {
     .portfolio-section { padding: 0.75rem; margin: 0.25rem; }
     .project-card img { height: 6rem; }
-}
-
-/* Efecto de partículas al final para mayor especificidad */
-body.dark-mode::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    background: radial-gradient(circle, var(--accent) 3%, transparent 3.5%) 0 0 / 25px 25px;
-    animation: particles 8s linear infinite;
-    border: 1px solid red; /* Eliminar tras confirmar */
-}
-
-@keyframes particles {
-    0% { background-position: 0 0; }
-    100% { background-position: 25px 25px; }
 }
