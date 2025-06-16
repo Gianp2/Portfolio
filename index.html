@@ -15,7 +15,7 @@
         :root {
             --primary: #3B82F6;
             --secondary: #06B6D4;
-            --accent: #34D399; /* Agregado para partículas */
+            --accent: #34D399; /* Para partículas */
             --dark-bg: #111827;
             --light-bg: #F9FAFB;
             --text-dark: #F3F4F6;
@@ -33,32 +33,12 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
-            position: relative; /* Asegura que ::before funcione */
+            position: relative;
         }
 
         body.dark-mode {
-            background: var(--dark-bg); /* Fondo sólido para mejor contraste */
+            background: var(--dark-bg); /* Fondo sólido para contraste */
             color: var(--text-dark);
-        }
-
-        /* Efecto de partículas en modo oscuro */
-        body.dark-mode::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            background: radial-gradient(circle, var(--accent) 2%, transparent 2.5%) 0 0 / 30px 30px;
-            animation: particles 10s linear infinite;
-            border: 1px solid red; /* Borde temporal para depuración, eliminar tras confirmar */
-        }
-
-        @keyframes particles {
-            0% { background-position: 0 0; }
-            100% { background-position: 30px 30px; }
         }
 
         body.light-mode {
@@ -67,7 +47,7 @@
         }
 
         .portfolio-section {
-            background: rgba(31, 41, 55, 0.6); /* Reducida opacidad para ver partículas */
+            background: rgba(31, 41, 55, 0.5); /* Más transparente */
             border: 2px solid var(--primary);
             backdrop-filter: blur(8px);
             border-radius: 1rem;
@@ -77,7 +57,7 @@
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
             position: relative;
-            z-index: 1; /* Por encima de partículas */
+            z-index: 1;
         }
 
         .light-mode .portfolio-section {
@@ -112,7 +92,7 @@
         header {
             position: sticky;
             top: 0;
-            z-index: 10; /* Por encima de partículas */
+            z-index: 10;
             transition: background 0.3s ease;
         }
 
@@ -176,7 +156,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            z-index: 1; /* Por encima de partículas */
+            z-index: 1;
         }
 
         .light-mode .project-card {
@@ -222,7 +202,7 @@
             padding: 0.25rem 0.5rem;
             border-radius: 0.25rem;
             transition: background-color 0.3s ease;
-            z-index: 1; /* Por encima de partículas */
+            z-index: 1;
         }
 
         .light-mode .language-tag {
@@ -248,7 +228,7 @@
             font-weight: bold;
             padding: 0.25rem 0.5rem;
             border-radius: 0.25rem;
-            z-index: 1; /* Por encima de partículas */
+            z-index: 1;
         }
 
         .light-mode .project-badge {
@@ -258,7 +238,7 @@
         .timeline-item {
             position: relative;
             animation: fadeInUp 1s ease-out;
-            z-index: 1; /* Por encima de partículas */
+            z-index: 1;
         }
 
         .timeline-item .bg-cyan-500 {
@@ -284,7 +264,7 @@
             box-shadow: var(--shadow);
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 100; /* Muy alto */
+            z-index: 100;
         }
 
         #scrollTopBtn.visible {
@@ -307,7 +287,7 @@
             justify-content: center;
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, background-color 0.3s ease;
-            z-index: 100; /* Muy alto */
+            z-index: 100;
         }
 
         #themeToggle:hover {
@@ -317,7 +297,7 @@
 
         input, textarea {
             transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
-            z-index: 1; /* Por encima de partículas */
+            z-index: 1;
         }
 
         .light-mode input, .light-mode textarea {
@@ -332,7 +312,7 @@
 
         footer {
             position: relative;
-            z-index: 1; /* Por encima de partículas */
+            z-index: 1;
         }
 
         @media (max-width: 1280px) {
@@ -424,6 +404,26 @@
                 font-size: 0.875rem;
                 padding: 0.5rem 1rem;
             }
+        }
+
+        /* Partículas al final para mayor especificidad */
+        body.dark-mode::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle, var(--accent) 3%, transparent 3.5%) 0 0 / 25px 25px;
+            animation: particles 8s linear infinite;
+            border: 1px solid red; /* Eliminar tras confirmar */
+        }
+
+        @keyframes particles {
+            0% { background-position: 0 0; }
+            100% { background-position: 25px 25px; }
         }
     </style>
 </head>
@@ -655,7 +655,7 @@
                 repo: 'gastos',
                 image: 'img/gastos.png',
                 inProgress: false,
-                languages: ['HTML', 'CSS', 'JavaScript (DOM)']
+                languages: ['HTML', 'CSS', 'JavaScript (DOM)', 'Bootstrap 5']
             },
             {
                 title: 'SecureVault',
@@ -673,7 +673,7 @@
                 repo: 'geo-ip',
                 image: 'img/geoip.png',
                 inProgress: false,
-                languages: ['HTML', 'CSS', 'JavaScript']
+                languages: ['HTML', 'CSS', 'JavaScript', 'Node.js']
             }
         ];
 
