@@ -34,12 +34,12 @@
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
             position: relative;
-
         }
 
         body.dark-mode {
             background: var(--dark-bg); /* Fondo sólido para contraste */
             color: var(--text-dark);
+        }
 
         body.light-mode {
             background: var(--light-bg);
@@ -438,9 +438,6 @@
                 <a href="CV-PasquinelliGianluca.pdf" target="_blank" class="inline-flex items-center bg-cyan-500 text-white py-2 px-4 rounded-lg hover:bg-cyan-600 transition text-base" aria-label="Descargar currículum">
                     <i class="fas fa-file-pdf mr-2"></i> Currículum
                 </a>
-
-
-                
             </nav>
         </div>
     </header>
@@ -591,6 +588,9 @@
                     <a href="mailto:gianpasquinelli24@gmail.com" class="inline-flex items-center bg-cyan-500 text-white py-3 px-6 rounded-lg hover:bg-cyan-600 transition text-base hover:scale-105" aria-label="Enviar correo electrónico">
                         <i class="fas fa-envelope mr-2"></i> Enviar Correo
                     </a>
+                    <a href="https://www.linkedin.com/in/gian-pasquinelli/" target="_blank" class="inline-flex items-center bg-cyan-500 text-white py-3 px-6 rounded-lg hover:bg-cyan-600 transition text-base hover:scale-105" aria-label="Conectar en LinkedIn">
+                        <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+                    </a>
                 </div>
             </div>
         </section>
@@ -617,7 +617,7 @@
             loop: true
         });
 
-       const projects = [
+        const projects = [
     {
         title: 'Perros y Gatos',
         description: 'Sitio web desarrollado para una protectora de animales. Permite mostrar mascotas disponibles para adopción y gestionar su información mediante un panel privado para administradores.',
