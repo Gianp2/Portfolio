@@ -7,8 +7,8 @@
     --text-dark: #E2E8F0; /* Light gray for dark mode text */
     --text-light: #1E293B; /* Dark slate for light mode text */
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
-    --glass-bg: rgba(255, 255, 255, 0.1); /* Glassmorphism background */
-    --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+    --glass-bg: rgba(255, 255, 255, 0.05); /* Más transparente para ver partículas */
+    --glass-border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Reset básico */
@@ -20,55 +20,18 @@
 
 /* Fondo y tipografía base */
 body {
-    font-family: 'Poppins', 'Inter', -apple-system, sans-serif; /* Modern font stack */
+    font-family: 'Poppins', 'Inter', -apple-system, sans-serif;
     font-weight: 400;
     line-height: 1.75;
     color: var(--text-light);
     background: var(--light-bg);
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
-    position: relative; /* Asegura que el ::before funcione */
+    position: relative;
 }
 
 body.dark-mode {
-    background: var(--dark-bg); /* Fondo sólido para mejor contraste */
+    background: var(--dark-bg);
     color: var(--text-dark);
-}
-
-/* Efecto de partículas en modo oscuro */
-body.dark-mode::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    background: radial-gradient(circle, var(--accent) 2%, transparent 2.5%) 0 0 / 30px 30px;
-    animation: particles 10s linear infinite;
-    /* Borde temporal para depuración (elimínalo tras verificar) */
-    border: 1px solid red; /* Quitar después de confirmar visibilidad */
-}
-
-@keyframes particles {
-    0% { background-position: 0 0; }
-    100% { background-position: 30px 30px; }
-}
-
-/* Animación para títulos */
-h1, h2, h3 {
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    animation: slideIn 0.6s ease-out;
-}
-
-h1 { font-size: 2.5rem; }
-h2 { font-size: 1.875rem; }
-h3 { font-size: 1.5rem; }
-
-@keyframes slideIn {
-    0% { opacity: 0; transform: translateY(15px); }
-    100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Contenedores de secciones con glassmorphism */
@@ -83,7 +46,7 @@ h3 { font-size: 1.5rem; }
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
     position: relative;
-    z-index: 1; /* Por encima de las partículas */
+    z-index: 1;
 }
 
 .light-mode .portfolio-section {
@@ -99,10 +62,10 @@ h3 { font-size: 1.5rem; }
 
 /* Header */
 header {
-    background: transparent;
+    background: rgba(15, 23, 42, 0.8); /* Más transparente */
     position: sticky;
     top: 0;
-    z-index: 50; /* Alto para estar por encima de las partículas */
+    z-index: 50;
     backdrop-filter: blur(10px);
     transition: background 0.4s ease;
 }
@@ -148,13 +111,13 @@ header nav a:hover::after {
 
 /* Footer */
 footer {
-    background: var(--dark-bg);
+    background: rgba(15, 23, 42, 0.8); /* Más transparente */
     color: var(--text-dark);
     padding: 2rem;
     text-align: center;
     transition: background 0.4s ease;
     position: relative;
-    z-index: 1; /* Por encima de las partículas */
+    z-index: 1;
 }
 
 .light-mode footer {
@@ -204,7 +167,7 @@ button:hover::before, a[class*="bg-"]:hover::before {
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
-    z-index: 1; /* Por encima de las partículas */
+    z-index: 1;
 }
 
 .light-mode .project-card {
@@ -238,7 +201,7 @@ button:hover::before, a[class*="bg-"]:hover::before {
     border-radius: 0.375rem;
     transition: background 0.3s ease;
     position: relative;
-    z-index: 1; /* Por encima de las partículas */
+    z-index: 1;
 }
 
 .light-mode .language-tag {
@@ -260,14 +223,14 @@ button:hover::before, a[class*="bg-"]:hover::before {
     padding: 0.3rem 0.75rem;
     border-radius: 0.375rem;
     position: relative;
-    z-index: 1; /* Por encima de las partículas */
+    z-index: 1;
 }
 
 /* Línea de tiempo */
 .timeline-item {
     animation: slideIn 0.8s ease-out;
     position: relative;
-    z-index: 1; /* Por encima de las partículas */
+    z-index: 1;
 }
 
 .timeline-item:hover .bg-cyan-500 {
@@ -284,7 +247,7 @@ button:hover::before, a[class*="bg-"]:hover::before {
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
     position: fixed;
-    z-index: 100; /* Muy alto para evitar superposición */
+    z-index: 100;
 }
 
 #scrollTopBtn.visible {
@@ -306,7 +269,7 @@ button:hover::before, a[class*="bg-"]:hover::before {
     box-shadow: var(--shadow);
     transition: all 0.3s ease;
     position: relative;
-    z-index: 100; /* Muy alto para evitar superposición */
+    z-index: 100;
 }
 
 #themeToggle:hover {
@@ -323,7 +286,7 @@ input, textarea {
     color: var(--text-dark);
     transition: all 0.3s ease;
     position: relative;
-    z-index: 1; /* Por encima de las partículas */
+    z-index: 1;
 }
 
 .light-mode input, .light-mode textarea {
@@ -335,6 +298,22 @@ input, textarea {
 input:focus, textarea:focus {
     border-color: var(--accent);
     box-shadow: 0 0 8px rgba(52, 211, 153, 0.3);
+}
+
+/* Animación para títulos */
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    animation: slideIn 0.6s ease-out;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.5rem; }
+
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsividad */
@@ -371,4 +350,24 @@ input:focus, textarea:focus {
 @media (max-width: 480px) {
     .portfolio-section { padding: 0.75rem; margin: 0.25rem; }
     .project-card img { height: 6rem; }
+}
+
+/* Efecto de partículas al final para mayor especificidad */
+body.dark-mode::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(circle, var(--accent) 3%, transparent 3.5%) 0 0 / 25px 25px;
+    animation: particles 8s linear infinite;
+    border: 1px solid red; /* Eliminar tras confirmar */
+}
+
+@keyframes particles {
+    0% { background-position: 0 0; }
+    100% { background-position: 25px 25px; }
 }
