@@ -15,6 +15,7 @@
         :root {
             --primary: #3B82F6;
             --secondary: #06B6D4;
+            --accent: #34D399; /* Agregado para partículas */
             --dark-bg: #111827;
             --light-bg: #F9FAFB;
             --text-dark: #F3F4F6;
@@ -32,12 +33,32 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative; /* Asegura que ::before funcione */
         }
 
         body.dark-mode {
-            background: linear-gradient(135deg, #1E3A8A 0%, #111827 100%);
-            background-attachment: fixed;
+            background: var(--dark-bg); /* Fondo sólido para mejor contraste */
             color: var(--text-dark);
+        }
+
+        /* Efecto de partículas en modo oscuro */
+        body.dark-mode::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle, var(--accent) 2%, transparent 2.5%) 0 0 / 30px 30px;
+            animation: particles 10s linear infinite;
+            border: 1px solid red; /* Borde temporal para depuración, eliminar tras confirmar */
+        }
+
+        @keyframes particles {
+            0% { background-position: 0 0; }
+            100% { background-position: 30px 30px; }
         }
 
         body.light-mode {
@@ -46,7 +67,7 @@
         }
 
         .portfolio-section {
-            background: rgba(31, 41, 55, 0.8);
+            background: rgba(31, 41, 55, 0.6); /* Reducida opacidad para ver partículas */
             border: 2px solid var(--primary);
             backdrop-filter: blur(8px);
             border-radius: 1rem;
@@ -55,6 +76,8 @@
             max-width: 1200px;
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+            position: relative;
+            z-index: 1; /* Por encima de partículas */
         }
 
         .light-mode .portfolio-section {
@@ -84,6 +107,13 @@
         .fab:hover, .fas:hover {
             transform: scale(1.2);
             color: var(--secondary);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10; /* Por encima de partículas */
+            transition: background 0.3s ease;
         }
 
         header nav a {
@@ -145,6 +175,8 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            position: relative;
+            z-index: 1; /* Por encima de partículas */
         }
 
         .light-mode .project-card {
@@ -190,6 +222,7 @@
             padding: 0.25rem 0.5rem;
             border-radius: 0.25rem;
             transition: background-color 0.3s ease;
+            z-index: 1; /* Por encima de partículas */
         }
 
         .light-mode .language-tag {
@@ -215,6 +248,7 @@
             font-weight: bold;
             padding: 0.25rem 0.5rem;
             border-radius: 0.25rem;
+            z-index: 1; /* Por encima de partículas */
         }
 
         .light-mode .project-badge {
@@ -224,6 +258,7 @@
         .timeline-item {
             position: relative;
             animation: fadeInUp 1s ease-out;
+            z-index: 1; /* Por encima de partículas */
         }
 
         .timeline-item .bg-cyan-500 {
@@ -249,6 +284,7 @@
             box-shadow: var(--shadow);
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 100; /* Muy alto */
         }
 
         #scrollTopBtn.visible {
@@ -271,6 +307,7 @@
             justify-content: center;
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, background-color 0.3s ease;
+            z-index: 100; /* Muy alto */
         }
 
         #themeToggle:hover {
@@ -280,6 +317,7 @@
 
         input, textarea {
             transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+            z-index: 1; /* Por encima de partículas */
         }
 
         .light-mode input, .light-mode textarea {
@@ -290,6 +328,11 @@
 
         .light-mode input:focus, .light-mode textarea:focus {
             border-color: var(--primary);
+        }
+
+        footer {
+            position: relative;
+            z-index: 1; /* Por encima de partículas */
         }
 
         @media (max-width: 1280px) {
@@ -543,7 +586,7 @@
         <section id="contact" class="py-12 sm:py-16 bg-gray-800 portfolio-section">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-cyan-400 animate-fadeInUp">Contacto</h2>
-                <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 max-w-2xl mx-auto">Contáctame</p>
+                <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 max-w-2xl mx-auto">¿Listo para colaborar? Contáctame para trabajar juntos en tu próximo proyecto.</p>
                 <div class="flex flex-wrap gap-4 justify-center contact-buttons">
                     <a href="https://wa.me/5493471417071" target="_blank" class="inline-flex items-center bg-cyan-500 text-white py-3 px-6 rounded-lg hover:bg-cyan-600 transition text-base hover:scale-105" aria-label="Contactar por WhatsApp">
                         <i class="fab fa-whatsapp mr-2"></i> WhatsApp
@@ -621,7 +664,7 @@
                 repo: 'securevault',
                 image: 'img/securevault.png',
                 inProgress: false,
-                languages: ['HTML']
+                languages: ['HTML', 'Local Storage']
             },
             {
                 title: 'GeoIp',
