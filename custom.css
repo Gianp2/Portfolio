@@ -18,13 +18,16 @@
 
 /* Fondo, tipografía base y partículas */
 body {
-    font-family: 'Poppins', 'Inter', -apple-system, sans-serif;
-    font-weight: 400;
-    line-height: 1.75;
-    color: var(--text-light);
-    background: var(--light-bg);
-    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
-    position: relative;
+  font-family: 'Poppins', 'Inter', -apple-system, sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-light);
+  background-color: var(--light-bg); /* solo color */
+  background-image: url("/background-dots.svg");
+  background-repeat: repeat;
+  background-position: center;
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  position: relative;
 }
 
 /* Partículas siempre activas */
